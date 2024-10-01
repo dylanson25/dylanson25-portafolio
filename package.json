@@ -9,7 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "prettier --write .",
-		"lint:style": "stylelint 'stylelint '**/*.{css,scss,astro}'",
+		"lint:style": "stylelint '**/*.{css,scss,astro}'",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro"
 	},
 	"dependencies": {
