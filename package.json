@@ -9,7 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "prettier --write .",
-		"lint:style": "stylelint '**/*.css' '**/*.scss' '**/*.astro'",
+		"lint:style": "stylelint 'stylelint '**/*.{css,scss,astro}'",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro"
 	},
 	"dependencies": {
@@ -24,10 +24,13 @@
 		"@typescript-eslint/parser": "^8.8.0",
 		"eslint": "^9.11.1",
 		"eslint-plugin-astro": "^1.2.4",
+		"postcss": "^8.4.47",
+		"postcss-html": "^1.7.0",
 		"postcss-import": "^16.1.0",
 		"prettier": "^3.3.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"stylelint": "^16.9.0",
-		"stylelint-config-standard": "^36.0.1"
+		"stylelint-config-standard": "^36.0.1",
+		"stylelint-config-standard-scss": "^13.1.0"
 	}
 }
