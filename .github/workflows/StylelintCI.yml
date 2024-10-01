@@ -1,0 +1,23 @@
+name: Stylelint CI
+
+on:
+  pull_request:
+
+jobs:
+  stylelint:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4.1.7
+
+      - name: Use Node.js 20.11
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: 20.11
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run stylelint
+        run: npm run lint:style
