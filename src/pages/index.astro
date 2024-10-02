@@ -1,17 +1,60 @@
 ---
+import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/icon/Icon.component.astro';
+import dylanImg from '../../public/img/dylan.jpeg';
+
+const socialMedia: ('github' | 'mail' | 'linkedin')[] = [
+	'github',
+	'mail',
+	'linkedin',
+];
 ---
 
 <Layout title="Dylanson25 | Portafolio">
 	<main
-		class="flex justify-center items-center h-full w-full bg-slate-700 font-sans"
+		class="flex relative overflow-hidden justify-center items-center h-full w-full bg-slate-700 font-sans"
 	>
+		<header class="absolute top-0 px-10 pt-6 pb-4 rounded-b-lg bg-slate-500/50">
+			<h2 class="font-semibold text-gray-200/70 text-center mb-2">
+				Dylanson25.dev
+			</h2>
+			<ul class="grid gap-6 grid-cols-3">
+				{
+					socialMedia.map((name) => (
+						<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)]">
+							<a href="https://github.com/dylanson25" target="_blank">
+								<Icon fill_hover="white" size="lg" name={name} />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</header>
+		<section>
+			<Image
+				class="rounded-full drop-shadow-lg"
+				src={dylanImg}
+				alt="Imagen Dylan Villarreal Toscano"
+				width={300}
+			/>
+			<h1 class="font-semibold text-gray-200/70 text-center mt-5 text-3xl">
+				Dylan <br /> Villrarreal Toscano
+			</h1>
+		</section>
 		<section
-			class="-rotate-12 bg-orange-300 rounded-lg p-2 w-full h-full max-h-56 max-w-64"
+			class="absolute hidden md:block right-0 bottom-2 -rotate-12 bg-orange-300 rounded-lg p-2 w-full h-full max-h-56 max-w-64"
 		>
 			<h2 class="font-semibold text-4xl leading-10 font-mono">
 				My New <br /> Site Is <br /> Coming <br /> Soon!
 			</h2>
 		</section>
+		<article
+			class="absolute left-5 bottom-5 drop-shadow-[0_0_10px_rgba(245,245,245,1)] md:hidden"
+		>
+			<h2 class="text-4xl text-slate-100/70 font-extrabold">
+				My New Site Is <br /> Coming Soon!
+			</h2>
+		</article>
 	</main>
 </Layout>
