@@ -3,11 +3,14 @@ import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/icon/Icon.component.astro';
 import dylanImg from '../../public/img/dylan.jpeg';
-
-const socialMedia: ('github' | 'mail' | 'linkedin')[] = [
-	'github',
-	'mail',
-	'linkedin',
+interface SocialMedia {
+	name: 'github' | 'mail' | 'linkedin';
+	url: string;
+}
+const socialMedia: SocialMedia[] = [
+	{ name: 'github', url: 'https://github.com/dylanson25' },
+	{ name: 'mail', url: 'mailto:dvillarreal0@ucol.mx' },
+	{ name: 'linkedin', url: 'https://www.linkedin.com/in/dylan-toscano/' },
 ];
 ---
 
@@ -21,9 +24,9 @@ const socialMedia: ('github' | 'mail' | 'linkedin')[] = [
 			</h2>
 			<ul class="grid gap-6 grid-cols-3">
 				{
-					socialMedia.map((name) => (
+					socialMedia.map(({ name, url }) => (
 						<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)]">
-							<a href="https://github.com/dylanson25" target="_blank">
+							<a href={url} target="_blank">
 								<Icon fill_hover="white" size="lg" name={name} />
 							</a>
 						</li>
@@ -38,7 +41,7 @@ const socialMedia: ('github' | 'mail' | 'linkedin')[] = [
 				alt="Imagen Dylan Villarreal Toscano"
 				width={300}
 			/>
-			<h1 class="font-semibold text-gray-200/70 text-center mt-5 text-3xl">
+			<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
 				Dylan <br /> Villrarreal Toscano
 			</h1>
 		</section>
@@ -49,10 +52,8 @@ const socialMedia: ('github' | 'mail' | 'linkedin')[] = [
 				My New <br /> Site Is <br /> Coming <br /> Soon!
 			</h2>
 		</section>
-		<article
-			class="absolute left-5 bottom-5 drop-shadow-[0_0_10px_rgba(245,245,245,1)] md:hidden"
-		>
-			<h2 class="text-4xl text-slate-100/70 font-extrabold">
+		<article class="absolute left-5 bottom-5 md:hidden">
+			<h2 class="text-2xl text-slate-100/50 font-extrabold">
 				My New Site Is <br /> Coming Soon!
 			</h2>
 		</article>
