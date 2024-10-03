@@ -25,7 +25,7 @@ const socialMedia: SocialMedia[] = [
 			<ul class="grid gap-6 grid-cols-3">
 				{
 					socialMedia.map(({ name, url }) => (
-						<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)]">
+						<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)] hover:fill-white fill-[#e4e2e2]">
 							<a href={url} target="_blank">
 								<Icon fill_hover="white" size="lg" name={name} />
 							</a>
