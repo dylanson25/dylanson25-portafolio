@@ -1,54 +1,94 @@
-# Astro Starter Kit: Basics
+# Dylanson25 Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+Welcome to the official repository for my personal portfolio! This project showcases my skills, projects, and experience in web development using modern technologies like **AstroJS**, **TailwindCSS**, and **Netlify**.
+
+## Table of Contents
+
+* [Project Overview](#project-overview)
+* [Technologies](#technologies)
+* [Setup and Installation](#setup-and-installation)
+* [Usage](#usage)
+* [Continuous Integration (CI)](#continuous-integration-ci)
+* [Deployment](#deployment)
+* [Contributing](#contributing)
+* [License](#license)
+
+## Project Overview
+
+This portfolio website is built to present my work, skills, and development journey. It is optimized for performance, scalability, and cross-browser compatibility. The website is live and continuously deployed on **Netlify**.
+
+## Technologies
+
+This project uses the following technologies:
+
+* **[AstroJS](https://astro.build/)**: A modern static site builder for faster web development.
+* **[TailwindCSS](https://tailwindcss.com/)**: A utility-first CSS framework for styling.
+* **[Netlify](https://www.netlify.com/)**: Deployment and hosting of the website.
+* **ESLint**: For maintaining code quality and adhering to best practices.
+* **Prettier**: Code formatting to keep consistency across the project.
+
+## Setup and Installation
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/dylanson25/your-repo-name.git
+cd your-repo-name
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+2. **Install dependencies:**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Ensure you have [Node.js](https://nodejs.org/) installed, then run:
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+3. **Start the development server:**
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+This will start the AstroJS development server, and you can view the project locally.
 
-## 🧞 Commands
+## Usage
 
-All commands are run from the root of the project, from a terminal:
+The primary commands to run and build the project are:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+* `npm run dev`: Starts the development server.
+* `npm run build`: Builds the project for production.
+* `npm run preview`: Previews the production build locally.
+* `npm run lint`: Runs ESLint to check for any code quality issues.
+* `npm run format`: Runs Prettier to automatically format code.
 
-## 👀 Want to learn more?
+## Continuous Integration (CI)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+GitHub Actions are configured for this project to ensure consistent quality in every pull request:
+
+* **Linting CI**: Automatically checks the code quality using ESLint.
+* **Stylelint CI**: Ensures consistent styling of CSS and Astro files.
+
+## Deployment
+
+The project is deployed automatically on **Netlify** after each push or pull request. You can view the live version at: <https://dylanson25.dev>
+
+To deploy manually, run:
+
+```bash
+npm run build
+```
+
+Then deploy the contents of the `dist/` directory to Netlify or your preferred hosting platform.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or find bugs, feel free to create a pull request or open an issue.
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
