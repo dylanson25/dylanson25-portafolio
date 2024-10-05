@@ -36,12 +36,14 @@ const socialMedia: SocialMedia[] = [
 		</ul>
 	</header>
 	<section>
-		<Image
-			class="rounded-full drop-shadow-lg"
-			src={dylanImg}
-			alt="Imagen Dylan Villarreal Toscano"
-			width={300}
-		/>
+		<div class="relative rounded-full overflow-hidden h-72 w-72">
+			<Image
+				class="absolute -top-16"
+				src={dylanImg}
+				width={450}
+				alt="Imagen Dylan Villarreal Toscano"
+			/>
+		</div>
 		<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
 			Dylan <br /> Villrarreal Toscano
 		</h1>
