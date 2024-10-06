@@ -6,10 +6,10 @@ export const seoConfig = {
 		'Currently my page is under development, but you can come and explore my social networks to get to know me a little better.',
 	type: 'website',
 	image: {
-		url: 'https://dylanson25dev.netlify.app/.netlify/images?url=_astro%2Fdylan.BPEYV6fX.jpeg&w=300',
+		url: '/img/background.webp',
 		alt: 'Dylan Profile image',
-		width: 300,
-		height: 300,
+		width: 705,
+		height: 600,
 	},
 	siteName: 'Dylan V. T | Portafolio',
 	twitter: {
