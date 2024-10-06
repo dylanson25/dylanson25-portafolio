@@ -1,16 +1,17 @@
 ---
 import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/icon/Icon.component.astro';
-import dylanImg from '../../public/img/dylan.jpeg';
+import Icon from '../components/Icon.component.astro';
+import dylanImg from '../../public/img/dylan.webp';
 interface SocialMedia {
-	name: 'github' | 'mail' | 'linkedin';
+	name: 'github' | 'mail' | 'linkedin' | 'instagram';
 	url: string;
 }
 const socialMedia: SocialMedia[] = [
 	{ name: 'github', url: 'https://github.com/dylanson25' },
 	{ name: 'mail', url: 'mailto:dvillarreal0@ucol.mx' },
 	{ name: 'linkedin', url: 'https://www.linkedin.com/in/dylan-toscano/' },
+	{ name: 'instagram', url: 'https://www.instagram.com/dylan_toscano_25/' },
 ];
 ---
 
@@ -22,7 +23,7 @@ const socialMedia: SocialMedia[] = [
 		<h2 class="font-semibold text-gray-200/70 text-center mb-2">
 			Dylanson25.dev
 		</h2>
-		<ul class="grid gap-6 grid-cols-3">
+		<ul class="grid gap-6 grid-cols-4">
 			{
 				socialMedia.map(({ name, url }) => (
 					<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)] hover:fill-white fill-[#e4e2e2]">
@@ -35,12 +36,14 @@ const socialMedia: SocialMedia[] = [
 		</ul>
 	</header>
 	<section>
-		<Image
-			class="rounded-full drop-shadow-lg"
-			src={dylanImg}
-			alt="Imagen Dylan Villarreal Toscano"
-			width={300}
-		/>
+		<div class="relative rounded-full overflow-hidden h-72 w-72">
+			<Image
+				class="absolute -top-16"
+				src={dylanImg}
+				width={450}
+				alt="Imagen Dylan Villarreal Toscano"
+			/>
+		</div>
 		<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
 			Dylan <br /> Villrarreal Toscano
 		</h1>

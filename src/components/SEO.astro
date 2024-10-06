@@ -14,7 +14,7 @@ const {
 	description,
 	// preload,
 	canonical,
-	image = 'https://dylanson25dev.netlify.app/.netlify/images?url=_astro%2Fdylan.BPEYV6fX.jpeg&w=300',
+	image = '/img/background.webp',
 } = Astro.props as Props;
 
 const determineCanonicalURL = () => {
@@ -60,3 +60,4 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site);
 <meta name="googlebot" content="index, follow" />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
