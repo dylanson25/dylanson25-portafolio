@@ -1,61 +1,63 @@
 ---
 import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/icon/Icon.component.astro';
-import dylanImg from '../../public/img/dylan.jpeg';
+import Icon from '../components/Icon.component.astro';
+import dylanImg from '../../public/img/dylan.webp';
 interface SocialMedia {
-	name: 'github' | 'mail' | 'linkedin';
+	name: 'github' | 'mail' | 'linkedin' | 'instagram';
 	url: string;
 }
 const socialMedia: SocialMedia[] = [
 	{ name: 'github', url: 'https://github.com/dylanson25' },
 	{ name: 'mail', url: 'mailto:dvillarreal0@ucol.mx' },
 	{ name: 'linkedin', url: 'https://www.linkedin.com/in/dylan-toscano/' },
+	{ name: 'instagram', url: 'https://www.instagram.com/dylan_toscano_25/' },
 ];
 ---
 
-<Layout title="Dylanson25 | Portafolio">
-	<main
-		class="flex relative overflow-hidden justify-center items-center h-full w-full bg-slate-700 font-sans"
-	>
-		<header class="absolute top-0 px-10 pt-6 pb-4 rounded-b-lg bg-slate-500/50">
-			<h2 class="font-semibold text-gray-200/70 text-center mb-2">
-				Dylanson25.dev
-			</h2>
-			<ul class="grid gap-6 grid-cols-3">
-				{
-					socialMedia.map(({ name, url }) => (
-						<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)] hover:fill-white fill-[#e4e2e2]">
-							<a href={url} target="_blank">
-								<Icon fill_hover="white" size="lg" name={name} />
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</header>
-		<section>
+<Layout
+	title="Dylanson25 | Portafolio"
+	description="Development, experienced in Visual Studio, C#, C++, .NET, and Windows Forms. Graduated in Software Engineering from Universidad de Colima"
+>
+	<header class="absolute top-0 px-10 pt-6 pb-4 rounded-b-lg bg-slate-500/50">
+		<h2 class="font-semibold text-gray-200/70 text-center mb-2">
+			Dylanson25.dev
+		</h2>
+		<ul class="grid gap-6 grid-cols-4">
+			{
+				socialMedia.map(({ name, url }) => (
+					<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)] hover:fill-white fill-[#e4e2e2]">
+						<a href={url} target="_blank">
+							<Icon fill_hover="white" size="lg" name={name} />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</header>
+	<section>
+		<div class="relative rounded-full overflow-hidden h-72 w-72">
 			<Image
-				class="rounded-full drop-shadow-lg"
+				class="absolute -top-16"
 				src={dylanImg}
+				width={450}
 				alt="Imagen Dylan Villarreal Toscano"
-				width={300}
 			/>
-			<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
-				Dylan <br /> Villrarreal Toscano
-			</h1>
-		</section>
-		<section
-			class="absolute hidden md:block right-0 bottom-2 -rotate-12 bg-orange-300 rounded-lg p-2 w-full h-full max-h-56 max-w-64"
-		>
-			<h2 class="font-semibold text-4xl leading-10 font-mono">
-				My New <br /> Site Is <br /> Coming <br /> Soon!
-			</h2>
-		</section>
-		<article class="absolute left-5 bottom-5 md:hidden">
-			<h2 class="text-2xl text-slate-100/50 font-extrabold">
-				My New Site Is <br /> Coming Soon!
-			</h2>
-		</article>
-	</main>
+		</div>
+		<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
+			Dylan <br /> Villrarreal Toscano
+		</h1>
+	</section>
+	<section
+		class="absolute hidden md:block right-0 bottom-2 -rotate-12 bg-orange-300 rounded-lg p-2 w-full h-full max-h-56 max-w-64"
+	>
+		<h2 class="font-semibold text-4xl leading-10 font-mono">
+			My New <br /> Site Is <br /> Coming <br /> Soon!
+		</h2>
+	</section>
+	<article class="absolute left-5 bottom-5 md:hidden">
+		<h2 class="text-2xl text-slate-100/50 font-extrabold">
+			My New Site Is <br /> Coming Soon!
+		</h2>
+	</article>
 </Layout>

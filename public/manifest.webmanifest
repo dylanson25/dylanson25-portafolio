@@ -1,0 +1,14 @@
+{
+    "name": "Dylan V. T | Portafolio",
+    "short_name": "dylanson25",
+    "description": "Developer Portfolio, where you can find information about my background and skills.",
+    "theme_color": "#0369a1",
+    "background_color": "#0369a1",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "type": "svg"
+        }
+    ]
+}
