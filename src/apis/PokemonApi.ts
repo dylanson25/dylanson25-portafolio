@@ -1,4 +1,5 @@
 import axios, {
+	AxiosError,
 	type AxiosInstance,
 	type AxiosResponse,
 	type GenericAbortSignal,
@@ -15,7 +16,7 @@ class PokemonApiClass {
 		this._axios = axios.create({
 			baseURL: POKEMON_URL,
 		});
-		// this._interceptors();
+		this._interceptors();
 	}
 	_interceptors() {
 		this._interceptorsResponse();
@@ -29,7 +30,28 @@ class PokemonApiClass {
 
 		return abortController.signal;
 	}
-	_interceptorsResponse() {}
+	_interceptorsResponse() {
+		this._axios.interceptors.response.use(
+			(response) => {
+				if (String(response.status).match(/20[0-9]/g)) return response?.data;
+				else console.warn('❗️ Request', { response });
+
+				return response;
+			},
+			(err: AxiosError) => {
+				const { response, message } = err || {};
+				const aborted = axios.isCancel(err);
+				if (aborted)
+					return Promise.reject({
+						error: err.code,
+						message: err.config?.signal || err.message,
+						aborted,
+					});
+				const { status } = response || {};
+				return Promise.reject({ status, error: message, aborted });
+			},
+		);
+	}
 	makeRequest(request: request) {
 		const { method, url, axiosRequest = {} } = request;
 		const R = { url: `${method}:${url}`, axiosRequest: {}, method: method };
