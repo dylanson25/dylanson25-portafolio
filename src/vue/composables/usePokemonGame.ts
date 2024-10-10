@@ -3,6 +3,7 @@ import {
 	GameStatus,
 	type Pokemon,
 	type Result,
+	type PokemonListResponse,
 } from '@/models/pokemonGame.model';
 import pokemonApi from '@/apis/PokemonApi';
 import confetti from 'canvas-confetti';
@@ -19,9 +20,7 @@ export const usePokemonGame = () => {
 	const isLoading = computed(() => pokemons.value.length === 0);
 
 	const getPokemons = async (): Promise<Pokemon[]> => {
-		const { data } = await pokemonApi.get('/?limit=151');
-		const results: Result[] =
-			typeof data.results == 'object' ? data.results : [];
+		const { results } = await pokemonApi.get('/?limit=151');
 
 		const pokemonsArray = results.map(({ url, name }) => {
 			const urlParts = url.split('/');
@@ -57,10 +56,10 @@ export const usePokemonGame = () => {
 		gameStatus.value = GameStatus.Lost;
 	};
 
-	onMounted(async () => {
+	const init = async () => {
 		pokemons.value = await getPokemons();
 		getNextRound();
-	});
+	};
 
 	return {
 		gameStatus,
@@ -71,5 +70,8 @@ export const usePokemonGame = () => {
 		// Methods
 		getNextRound,
 		checkAnswer,
+
+		//lifecycle Hooks
+		init,
 	};
 };
