@@ -70,7 +70,7 @@ class PokemonApiClass {
 	get(
 		url: string,
 		axiosRequest: AxiosResponse | {} = {},
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse> | Promise<unknown> {
 		return this.makeRequest({ method: 'get', url, axiosRequest });
 	}
 }
