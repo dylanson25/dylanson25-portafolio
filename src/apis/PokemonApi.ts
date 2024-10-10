@@ -52,15 +52,25 @@ class PokemonApiClass {
 			},
 		);
 	}
-	makeRequest(request: request) {
+	makeRequest(request: request): Promise<AxiosResponse> {
 		const { method, url, axiosRequest = {} } = request;
-		const R = { url: `${method}:${url}`, axiosRequest: {}, method: method };
+
+		const axiosRequestPromise = this._axios[method](`${url}`, axiosRequest);
+
+		const R = {
+			url: `${method}:${url}`,
+			axiosRequest: axiosRequestPromise,
+			method: method,
+		};
 
 		R.axiosRequest = this._axios[method](`${url}`, axiosRequest);
 		this.requests.push(R);
 		return R.axiosRequest;
 	}
-	get(url: string, axiosRequest: AxiosResponse | {} = {}) {
+	get(
+		url: string,
+		axiosRequest: AxiosResponse | {} = {},
+	): Promise<AxiosResponse> {
 		return this.makeRequest({ method: 'get', url, axiosRequest });
 	}
 }
