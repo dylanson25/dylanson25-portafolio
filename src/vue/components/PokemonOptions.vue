@@ -5,7 +5,7 @@
 			:key="id"
 			@click="$emit('selectedOption', id)"
 			:class="[
-				'tracking-wider shadow-md border-slate-200 border-2 border-solid rounded-lg p-2 cursor-pointer w-40 text-center transition-all hover:bg-gray-100 hover:text-slate-700 font-medium capitalize disabled:shadow-none disabled:bg-gray-100',
+				'tracking-wider shadow-md border-slate-200 border-2 border-solid rounded-lg p-2 cursor-pointer  text-center transition-all hover:bg-gray-100 hover:text-slate-700 font-medium capitalize disabled:shadow-none disabled:bg-gray-100',
 				{
 					correct: id === correctAnswer && blockSelection,
 					incorrect: id !== correctAnswer && blockSelection,
