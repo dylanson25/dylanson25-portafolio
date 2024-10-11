@@ -1,8 +1,7 @@
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import {
 	GameStatus,
 	type Pokemon,
-	type Result,
 	type PokemonListResponse,
 } from '@/models/pokemonGame.model';
 import pokemonApi from '@/apis/PokemonApi';
