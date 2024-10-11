@@ -1,11 +1,11 @@
 <template>
-	<section class="mt-5 flex flex-col">
+	<section class="mt-5 grid grid-cols-2 grid-rows-2 gap-2 mb-2">
 		<button
 			v-for="{ name, id } in options"
 			:key="id"
 			@click="$emit('selectedOption', id)"
 			:class="[
-				'bg-white shadow-md rounded-lg p-3 m-2 cursor-pointer w-40 text-center transition-all hover:bg-gray-100 capitalize disabled:shadow-none disabled:bg-gray-100',
+				'tracking-wider shadow-md border-slate-200 border-2 border-solid rounded-lg p-2 cursor-pointer  text-center transition-all hover:bg-gray-100 hover:text-slate-700 font-medium capitalize disabled:shadow-none disabled:bg-gray-100',
 				{
 					correct: id === correctAnswer && blockSelection,
 					incorrect: id !== correctAnswer && blockSelection,
@@ -36,11 +36,17 @@ defineEmits<{
 
 <style scoped>
 .correct {
-	background-color: rgb(59 130 246 / 1) /* #3b82f6 */;
-	color: rgb(255 255 255 / 1) /* #ffffff */;
+	background-color: #22c55e;
+	color: rgba(255, 255, 255, 0.884);
 }
 
 .incorrect {
-	background-color: rgb(254 226 226 / 0.7) /* #fee2e2 */;
+	background-color: rgb(251 113 133 / 0.7);
+	color: #2b2b2b9d;
+}
+.correct,
+.incorrect {
+	border-color: transparent;
+	cursor: default;
 }
 </style>

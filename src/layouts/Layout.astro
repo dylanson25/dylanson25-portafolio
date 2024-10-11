@@ -24,9 +24,7 @@ const { title, description, preload, canonical, image } = Astro.props;
 		/>
 	</head>
 	<body class="bg-slate-700">
-		<main
-			class="flex relative overflow-hidden justify-center items-center h-full w-full font-sans"
-		>
+		<main class="h-full w-full font-sans">
 			<slot />
 		</main>
 	</body>
@@ -34,7 +32,6 @@ const { title, description, preload, canonical, image } = Astro.props;
 <style is:global>
 	html,
 	body {
-		width: 100vw;
-		height: 100vh;
+		height: 100%;
 	}
 </style>

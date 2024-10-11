@@ -1,43 +1,63 @@
 <template>
-	<section
-		v-if="isLoading || randomPokemon?.id === null"
-		class="flex flex-col justify-center items-center w-screen h-screen"
-	>
-		<h1 class="text-3xl">Espere por favor</h1>
-		<h3 class="animate-pulse">Cargando Pokémons</h3>
-	</section>
+	<template v-if="isReadyToPlay">
+		<section
+			v-if="isLoading || randomPokemon?.id === null"
+			class="flex flex-col justify-center items-center w-screen h-screen text-white"
+		>
+			<h1 class="text-3xl">Please wait</h1>
+			<h3 class="animate-pulse">Loading Pokémons</h3>
+		</section>
 
-	<section
-		v-else
-		class="flex flex-col justify-center items-center w-screen h-screen"
-	>
-		<h1 class="m-5">¿Quién es este Pokémon?</h1>
+		<section
+			v-else
+			class="flex flex-col justify-center items-center text-white"
+		>
+			<h1 class="text-xl">Who's that Pokémon?</h1>
 
-		<div class="h-20">
+			<!-- Pokemon Options -->
+			<PokemonOptions
+				:options="options"
+				:block-selection="gameStatus !== GameStatus.Playing"
+				:correct-answer="randomPokemon.id"
+				@selected-option="checkAnswer"
+			/>
+			<div class="h-20">
+				<button
+					v-if="gameStatus !== GameStatus.Playing"
+					@click="getNextRound(4)"
+					class="pt-2 rounded-md hover:underline hover:text-white text-white/70 decoration-solid"
+					data-test-id="btn-new-game"
+				>
+					Play Again
+				</button>
+			</div>
+			<!-- Pokemon Picture -->
+			<PokemonPicture
+				:pokemon-id="randomPokemon.id"
+				:show-pokemon="gameStatus !== GameStatus.Playing"
+			/>
+		</section>
+	</template>
+	<template v-else>
+		<section class="text-white w-72">
+			<h2 class="text-3xl mb-2">Welcome!</h2>
+			<p class="mb-1">
+				Our site is currently under development. Stay tuned for exciting updates
+				coming soon!
+			</p>
+			<p>
+				In the meantime, you can play a fun mini-game:
+				<b>"Who's That Pokémon?"</b> and test your Pokémon knowledge!
+			</p>
 			<button
-				v-if="gameStatus !== GameStatus.Playing"
-				@click="getNextRound(4)"
-				class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 transition-all"
+				@click="SetReadyToPlay()"
+				class="pt-2 rounded-md hover:underline hover:text-white text-white/70 decoration-solid"
 				data-test-id="btn-new-game"
 			>
-				¿Jugar de nuevo?
+				Play Again
 			</button>
-		</div>
-
-		<!-- Pokemon Picture -->
-		<PokemonPicture
-			:pokemon-id="randomPokemon.id"
-			:show-pokemon="gameStatus !== GameStatus.Playing"
-		/>
-
-		<!-- Pokemon Options -->
-		<PokemonOptions
-			:options="options"
-			:block-selection="gameStatus !== GameStatus.Playing"
-			:correct-answer="randomPokemon.id"
-			@selected-option="checkAnswer"
-		/>
-	</section>
+		</section>
+	</template>
 </template>
 
 <script setup lang="ts">
@@ -56,6 +76,11 @@ const {
 	getNextRound,
 	init,
 } = usePokemonGame();
+
+import { ref } from 'vue';
+
+const isReadyToPlay = ref(false);
+const SetReadyToPlay = () => (isReadyToPlay.value = !isReadyToPlay.value);
 
 onMounted(init);
 </script>
