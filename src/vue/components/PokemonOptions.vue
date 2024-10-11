@@ -36,11 +36,11 @@ defineEmits<{
 
 <style scoped>
 .correct {
-	background-color: rgb(59 130 246 / var(1)) /* #3b82f6 */;
-	color: rgb(255 255 255 / var(1)) /* #ffffff */;
+	background-color: rgb(59 130 246 / 1) /* #3b82f6 */;
+	color: rgb(255 255 255 / 1) /* #ffffff */;
 }
 
 .incorrect {
-	background-color: rgb(254 226 226 / var(0.7)) /* #fee2e2 */;
+	background-color: rgb(254 226 226 / 0.7) /* #fee2e2 */;
 }
 </style>
