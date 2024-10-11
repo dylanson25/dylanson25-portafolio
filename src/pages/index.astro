@@ -3,6 +3,7 @@ import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.component.astro';
 import dylanImg from '../../public/img/dylan.webp';
+import PokemonGame from '@/vue/pages/PokemonGame.vue';
 interface SocialMedia {
 	name: 'github' | 'mail' | 'linkedin' | 'instagram';
 	url: string;
@@ -35,19 +36,22 @@ const socialMedia: SocialMedia[] = [
 			}
 		</ul>
 	</header>
-	<section>
-		<div class="relative rounded-full overflow-hidden h-72 w-72">
-			<Image
-				class="absolute -top-16"
-				src={dylanImg}
-				width={450}
-				alt="Imagen Dylan Villarreal Toscano"
-			/>
-		</div>
-		<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
-			Dylan <br /> Villrarreal Toscano
-		</h1>
-	</section>
+	<div>
+		<section>
+			<div class="relative rounded-full overflow-hidden h-72 w-72">
+				<Image
+					class="absolute -top-16"
+					src={dylanImg}
+					width={450}
+					alt="Imagen Dylan Villarreal Toscano"
+				/>
+			</div>
+			<h1 class="font-semibold text-gray-200 text-center mt-5 text-3xl">
+				Dylan <br /> Villrarreal Toscano
+			</h1>
+		</section>
+	</div>
+	<PokemonGame client:load />
 	<section
 		class="absolute hidden md:block right-0 bottom-2 -rotate-12 bg-orange-300 rounded-lg p-2 w-full h-full max-h-56 max-w-64"
 	>
