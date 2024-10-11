@@ -11,7 +11,7 @@
 		v-else
 		class="flex flex-col justify-center items-center w-screen h-screen"
 	>
-		<h1 class="m-5">¿Quién es este Pokémon?</h1>
+		<h1 class="m-5 text-white">¿Quién es este Pokémon?</h1>
 
 		<div class="h-20">
 			<button
