@@ -1,34 +1,17 @@
 <template>
 	<section
 		v-if="isLoading || randomPokemon?.id === null"
-		class="flex flex-col justify-center items-center w-screen h-screen"
+		class="flex flex-col justify-center items-center w-screen h-screen text-white"
 	>
-		<h1 class="text-3xl">Espere por favor</h1>
-		<h3 class="animate-pulse">Cargando Pokémons</h3>
+		<h1 class="text-3xl">Please wait</h1>
+		<h3 class="animate-pulse">Loading Pokémons</h3>
 	</section>
 
 	<section
 		v-else
-		class="flex flex-col justify-center items-center w-screen h-screen"
+		class="flex flex-col justify-center items-center w-screen h-screen text-white"
 	>
-		<h1 class="m-5 text-white">¿Quién es este Pokémon?</h1>
-
-		<div class="h-20">
-			<button
-				v-if="gameStatus !== GameStatus.Playing"
-				@click="getNextRound(4)"
-				class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 transition-all"
-				data-test-id="btn-new-game"
-			>
-				¿Jugar de nuevo?
-			</button>
-		</div>
-
-		<!-- Pokemon Picture -->
-		<PokemonPicture
-			:pokemon-id="randomPokemon.id"
-			:show-pokemon="gameStatus !== GameStatus.Playing"
-		/>
+		<h1 class="text-xl">Who's that Pokémon?</h1>
 
 		<!-- Pokemon Options -->
 		<PokemonOptions
@@ -36,6 +19,21 @@
 			:block-selection="gameStatus !== GameStatus.Playing"
 			:correct-answer="randomPokemon.id"
 			@selected-option="checkAnswer"
+		/>
+		<div class="h-20">
+			<button
+				v-if="gameStatus !== GameStatus.Playing"
+				@click="getNextRound(4)"
+				class="pt-2 rounded-md hover:underline hover:text-white text-white/70 decoration-solid"
+				data-test-id="btn-new-game"
+			>
+				Play Again
+			</button>
+		</div>
+		<!-- Pokemon Picture -->
+		<PokemonPicture
+			:pokemon-id="randomPokemon.id"
+			:show-pokemon="gameStatus !== GameStatus.Playing"
 		/>
 	</section>
 </template>
