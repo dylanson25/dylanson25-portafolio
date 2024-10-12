@@ -3,7 +3,7 @@ import type { IconPropsModel } from '@/models/icon.model';
 import icons from '@/utils/icon';
 interface Props extends IconPropsModel {}
 
-const { name, fill, fill_hover, classes, size } = Astro.props;
+const { name, fill, fill_hover, size } = Astro.props;
 
 const formatStyleColorClass = (rule: string, color: string): string => {
 	const hexColorRegex = new RegExp('^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$');

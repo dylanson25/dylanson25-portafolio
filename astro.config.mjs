@@ -7,6 +7,8 @@ import sitemap from '@astrojs/sitemap';
 import { VitePWA } from 'vite-plugin-pwa';
 import { seoConfig, manifest } from './src/utils/seoConfig';
 
+import vue from '@astrojs/vue';
+
 // https://astro.build/config
 export default defineConfig({
 	build: {
@@ -18,7 +20,7 @@ export default defineConfig({
 		enabled: false,
 	},
 	site: seoConfig.baseURL,
-	integrations: [tailwind(), sitemap()],
+	integrations: [tailwind(), sitemap(), vue({ devtools: true })],
 	output: 'server',
 	adapter: netlify(),
 	vite: {
