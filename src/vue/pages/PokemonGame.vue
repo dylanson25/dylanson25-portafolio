@@ -54,7 +54,7 @@
 				class="pt-2 rounded-md hover:underline hover:text-white text-white/70 decoration-solid"
 				data-test-id="btn-new-game"
 			>
-				Play Again
+				Ready to play?
 			</button>
 		</section>
 	</template>
