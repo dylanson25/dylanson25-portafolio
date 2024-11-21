@@ -1,11 +1,12 @@
 export type SocialMediaKeys =
 	| 'GitHub'
 	| 'GitLab'
-	| 'WebUrl'
 	| 'Instagram'
 	| 'Facebook'
 	| 'Mail'
-	| 'Discord';
+	| 'Linkedin'
+	| 'Discord'
+	| 'WebUrl';
 
 export interface SocialMedia {
 	key: SocialMediaKeys;
