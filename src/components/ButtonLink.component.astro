@@ -1,0 +1,13 @@
+---
+interface Props {
+	disabled?: boolean;
+	href: string;
+	label: string;
+}
+const { href, label } = Astro.props as Props;
+---
+
+<a
+	class="uppercase font-bold pb-2 border-b-2 hover:text-green-400 border-b-green-400 text-xs text-white"
+	href={href}>{label}</a
+>
