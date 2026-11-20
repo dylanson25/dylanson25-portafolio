@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 
@@ -8,6 +8,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { seoConfig, manifest } from './src/utils/seoConfig';
 
 import vue from '@astrojs/vue';
+
+const isDev = process.argv.includes('dev');
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,14 +22,14 @@ export default defineConfig({
 		enabled: false,
 	},
 	site: seoConfig.baseURL,
-	integrations: [tailwind(), sitemap(), vue({ devtools: true })],
+	integrations: [sitemap(), vue({ devtools: true })],
 	output: 'server',
-	adapter: netlify(),
+	// The Netlify dev emulation serves project files as static assets and breaks
+	// Vue island hydration in `astro dev`, so the adapter is only used for builds.
+	adapter: isDev ? undefined : netlify(),
 	vite: {
-		build: {
-			cssMinify: 'lightningcss',
-		},
 		plugins: [
+			tailwindcss(),
 			VitePWA({
 				registerType: 'autoUpdate',
 				manifest,

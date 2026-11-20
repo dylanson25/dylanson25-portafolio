@@ -13,7 +13,7 @@ jobs:
       - name: Use Node.js 20.11
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20.11
+          node-version-file: .nvmrc
           cache: 'npm'
 
       - name: Install dependencies

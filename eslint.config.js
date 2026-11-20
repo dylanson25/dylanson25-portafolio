@@ -1,31 +1,17 @@
-import typescriptEslintParser from '@typescript-eslint/parser';
+import tseslint from 'typescript-eslint';
 import eslintPluginAstro from 'eslint-plugin-astro';
-import astroEslintParser from 'astro-eslint-parser';
 
 export default [
-	...eslintPluginAstro.configs.recommended,
+	{ ignores: ['dist/', '.netlify/', '.astro/', 'node_modules/'] },
 	{
-		files: ['**/*.{js,jsx,ts,tsx,astro}'],
+		files: ['**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
-			parser: typescriptEslintParser,
+			parser: tseslint.parser,
 			parserOptions: {
 				ecmaVersion: 'latest',
 				sourceType: 'module',
-				extraFileExtensions: ['.astro'],
 			},
 		},
-
-		rules: {},
 	},
-	{
-		files: ['**/*.astro'],
-		languageOptions: {
-			parser: astroEslintParser,
-			parserOptions: {
-				parser: '@typescript-eslint/parser',
-				extraFileExtensions: ['.astro'],
-			},
-		},
-		rules: {},
-	},
+	...eslintPluginAstro.configs.recommended,
 ];
