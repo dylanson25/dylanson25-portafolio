@@ -2,7 +2,7 @@
 	<template v-if="isReadyToPlay">
 		<section
 			v-if="isLoading || randomPokemon?.id === null"
-			class="flex flex-col justify-center items-center w-screen h-screen text-white"
+			class="flex flex-col justify-center items-center w-full min-h-80 text-white"
 		>
 			<h1 class="text-3xl">Please wait</h1>
 			<h3 class="animate-pulse">Loading Pokémons</h3>
@@ -39,19 +39,15 @@
 		</section>
 	</template>
 	<template v-else>
-		<section class="text-white w-72">
-			<h2 class="text-3xl mb-2">Welcome!</h2>
+		<section class="text-white max-w-sm text-center">
+			<h2 class="text-3xl mb-2">Who's That Pokémon?</h2>
 			<p class="mb-1">
-				Our site is currently under development. Stay tuned for exciting updates
-				coming soon!
-			</p>
-			<p>
-				In the meantime, you can play a fun mini-game:
-				<b>"Who's That Pokémon?"</b> and test your Pokémon knowledge!
+				A small mini-game built with Vue and the PokéAPI. Guess the Pokémon
+				from its silhouette and test your knowledge!
 			</p>
 			<button
 				@click="SetReadyToPlay()"
-				class="pt-2 rounded-md hover:underline hover:text-white text-white/70 decoration-solid"
+				class="mt-4 rounded-lg bg-cyan-500 px-5 py-2 font-semibold text-slate-900 transition hover:bg-cyan-400 cursor-pointer"
 				data-test-id="btn-new-game"
 			>
 				Ready to play?

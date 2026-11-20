@@ -26,7 +26,13 @@
                     "screen",
                     "tailwind",
                     "variants",
-                    "use"
+                    "use",
+                    "reference",
+                    "theme",
+                    "utility",
+                    "custom-variant",
+                    "source",
+                    "plugin"
                 ]
             }
         ]
