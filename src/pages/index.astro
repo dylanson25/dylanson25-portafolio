@@ -1,68 +1,338 @@
 ---
-import Image from 'astro/components/Image.astro';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.component.astro';
 import dylanImg from '../../public/img/dylan.webp';
 import PokemonGame from '@/vue/pages/PokemonGame.vue';
+import {
+	articles,
+	certifications,
+	experience,
+	profile,
+	projects,
+	skills,
+} from '@/data/portfolio';
+
 interface SocialMedia {
 	name: 'github' | 'mail' | 'linkedin' | 'instagram';
+	label: string;
 	url: string;
 }
 const socialMedia: SocialMedia[] = [
-	{ name: 'github', url: 'https://github.com/dylanson25' },
-	{ name: 'mail', url: 'mailto:dvillarreal0@ucol.mx' },
-	{ name: 'linkedin', url: 'https://www.linkedin.com/in/dylan-toscano/' },
-	{ name: 'instagram', url: 'https://www.instagram.com/dylan_toscano_25/' },
+	{ name: 'github', label: 'GitHub', url: 'https://github.com/dylanson25' },
+	{
+		name: 'linkedin',
+		label: 'LinkedIn',
+		url: 'https://www.linkedin.com/in/dylan-toscano/',
+	},
+	{
+		name: 'mail',
+		label: 'Email',
+		url: 'mailto:dvillarrealtoscano@gmail.com',
+	},
+	{
+		name: 'instagram',
+		label: 'Instagram',
+		url: 'https://www.instagram.com/dylan_toscano_25/',
+	},
 ];
+
+const navLinks = [
+	{ href: '#about', label: 'About' },
+	{ href: '#experience', label: 'Experience' },
+	{ href: '#projects', label: 'Projects' },
+	{ href: '#skills', label: 'Skills' },
+	{ href: '#learning', label: 'Learning' },
+	{ href: '#play', label: 'Play' },
+];
+
+const year = new Date().getFullYear();
 ---
 
 <Layout
-	title="Dylanson25 | Portafolio"
-	description="Development, experienced in Visual Studio, C#, C++, .NET, and Windows Forms. Graduated in Software Engineering from Universidad de Colima"
+	title="Dylan Villarreal Toscano | Full-Stack Software Engineer"
+	description="Full-stack software engineer with 4+ years of experience in React, Vue, TypeScript, C#/.NET and SQL. Software Engineering graduate from Universidad de Colima."
 >
-	<header class="w-fit mx-auto px-10 pt-6 pb-4 rounded-b-lg bg-slate-500/50">
-		<h2 class="font-semibold text-gray-200/70 text-center mb-2">
-			Dylanson25.dev
-		</h2>
-		<ul class="grid gap-6 grid-cols-4">
-			{
-				socialMedia.map(({ name, url }) => (
-					<li class="hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)] hover:fill-white fill-[#e4e2e2]">
-						<a href={url} target="_blank">
-							<Icon fill_hover="white" size="lg" name={name} />
+	<header class="sticky top-0 z-20 border-b border-slate-600/60 bg-slate-800/80 backdrop-blur">
+		<nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
+			<a href="#top" class="font-semibold text-gray-200 hover:text-white">
+				Dylanson25<span class="text-cyan-400">.dev</span>
+			</a>
+			<ul class="hidden gap-6 text-sm text-gray-300 md:flex">
+				{navLinks.map(({ href, label }) => (
+					<li>
+						<a class="hover:text-white" href={href}>
+							{label}
 						</a>
 					</li>
-				))
-			}
-		</ul>
+				))}
+			</ul>
+			<ul class="flex gap-4">
+				{socialMedia.map(({ name, label, url }) => (
+					<li class="fill-[#e4e2e2] hover:fill-white hover:drop-shadow-[0_0_10px_rgba(245,245,245,0.50)]">
+						<a href={url} target="_blank" rel="noopener" aria-label={label}>
+							<Icon fill_hover="white" size="md" name={name} />
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
 	</header>
-	<div
-		class="flex overflow-auto sm:h-3/4 sm:overflow-hidden justify-center items-center w-full pb-20 pt-3 sm:pb-0"
-	>
-		<div class="sm:flex max-w-4xl justify-between items-center lg:w-2/4">
-			<section class="mb-7 sm:mb-0 sm:mr-3 xl:m-8">
-				<div
-					class="relative rounded-full m-auto overflow-hidden w-60 h-60 md:h-72 md:w-72"
-				>
-					<Image
-						class="absolute -top-16"
-						src={dylanImg}
-						width={450}
-						alt="Imagen Dylan Villarreal Toscano"
-					/>
-				</div>
-				<h1
-					class="font-semibold w-full md:w-72 text-gray-200 text-center mt-5 text-3xl"
-				>
-					Dylan <br /> Villrarreal Toscano
+
+	<div id="top" class="mx-auto max-w-5xl px-5">
+		<!-- Hero -->
+		<section class="flex min-h-[calc(100vh-57px)] flex-col items-center justify-center gap-10 py-16 md:flex-row md:justify-between">
+			<div class="max-w-xl text-center md:text-left">
+				<p class="mb-2 font-mono text-cyan-400">Hi, my name is</p>
+				<h1 class="text-4xl font-bold text-gray-100 sm:text-5xl">
+					{profile.name}
 				</h1>
-			</section>
-			<PokemonGame client:load />
-		</div>
-		<article class="fixed left-5 bottom-5 md:hidden">
-			<h2 class="text-xl text-slate-100/50 font-extrabold">
-				My New Site Is <br /> Coming Soon!
-			</h2>
-		</article>
+				<h2 class="mt-3 text-2xl font-semibold text-gray-300">
+					{profile.role}
+				</h2>
+				<p class="mt-4 text-gray-400">{profile.tagline}</p>
+				<div class="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+					<a
+						href="#projects"
+						class="rounded-lg bg-cyan-500 px-5 py-2 font-semibold text-slate-900 transition hover:bg-cyan-400"
+					>
+						See my work
+					</a>
+					<a
+						href="#contact"
+						class="rounded-lg border border-gray-400 px-5 py-2 font-semibold text-gray-200 transition hover:border-white hover:text-white"
+					>
+						Get in touch
+					</a>
+				</div>
+			</div>
+			<div class="relative h-60 w-60 shrink-0 overflow-hidden rounded-full ring-4 ring-cyan-500/30 md:h-72 md:w-72">
+				<Image
+					class="absolute -top-16"
+					src={dylanImg}
+					width={450}
+					alt="Photo of Dylan Villarreal Toscano"
+					loading="eager"
+				/>
+			</div>
+		</section>
+
+		<!-- About -->
+		<section id="about" class="scroll-mt-20 py-16">
+			<h2 class="section-title">About me</h2>
+			<div class="grid gap-8 md:grid-cols-3">
+				<div class="space-y-4 text-gray-300 md:col-span-2">
+					{profile.summary.map((p) => (
+						<p>{p}</p>
+					))}
+				</div>
+				<aside class="card space-y-4 text-sm">
+					<div>
+						<h3 class="font-semibold text-gray-100">Education</h3>
+						<p class="text-gray-300">{profile.education.degree}</p>
+						<p class="text-gray-400">
+							{profile.education.school} · {profile.education.location}
+						</p>
+						<p class="text-gray-400">{profile.education.period}</p>
+					</div>
+					<div>
+						<h3 class="font-semibold text-gray-100">Languages</h3>
+						<p class="text-gray-300">{profile.languages}</p>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<!-- Experience -->
+		<section id="experience" class="scroll-mt-20 py-16">
+			<h2 class="section-title">Experience</h2>
+			<ol class="relative space-y-10 border-l border-slate-500 pl-6">
+				{experience.map((job) => (
+					<li class="relative">
+						<span class="absolute top-1.5 -left-[31px] h-3 w-3 rounded-full bg-cyan-400 ring-4 ring-slate-700" />
+						<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+							<h3 class="text-lg font-semibold text-gray-100">
+								{job.role} <span class="text-cyan-400">@ {job.company}</span>
+							</h3>
+							<p class="font-mono text-sm text-gray-400">{job.period}</p>
+						</div>
+						<p class="text-sm text-gray-400">{job.location}</p>
+						<ul class="mt-3 list-disc space-y-1 pl-5 text-gray-300">
+							{job.highlights.map((h) => (
+								<li>{h}</li>
+							))}
+						</ul>
+						<ul class="mt-3 flex flex-wrap gap-2">
+							{job.stack.map((s) => (
+								<li class="chip">{s}</li>
+							))}
+						</ul>
+					</li>
+				))}
+			</ol>
+		</section>
+
+		<!-- Projects -->
+		<section id="projects" class="scroll-mt-20 py-16">
+			<h2 class="section-title">Projects</h2>
+			<ul class="grid gap-6 sm:grid-cols-2">
+				{projects.map((project) => (
+					<li class="card flex flex-col">
+						<h3 class="text-lg font-semibold text-gray-100">{project.name}</h3>
+						<p class="mt-2 grow text-gray-300">{project.description}</p>
+						<ul class="mt-4 flex flex-wrap gap-2">
+							{project.stack.map((s) => (
+								<li class="chip">{s}</li>
+							))}
+						</ul>
+						<div class="mt-4 flex gap-4 text-sm font-semibold">
+							{project.repo && (
+								<a
+									class="text-cyan-400 hover:underline"
+									href={project.repo}
+									target="_blank"
+									rel="noopener"
+								>
+									Code
+								</a>
+							)}
+							{project.url && (
+								<a
+									class="text-cyan-400 hover:underline"
+									href={project.url}
+									target="_blank"
+									rel="noopener"
+								>
+									Live site
+								</a>
+							)}
+						</div>
+					</li>
+				))}
+			</ul>
+		</section>
+
+		<!-- Skills -->
+		<section id="skills" class="scroll-mt-20 py-16">
+			<h2 class="section-title">Skills</h2>
+			<div class="grid gap-6 sm:grid-cols-2">
+				{skills.map((group) => (
+					<div class="card">
+						<h3 class="mb-3 font-semibold text-gray-100">{group.title}</h3>
+						<ul class="flex flex-wrap gap-2">
+							{group.items.map((s) => (
+								<li class="chip">{s}</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Certifications & writing -->
+		<section id="learning" class="scroll-mt-20 py-16">
+			<h2 class="section-title">Certifications & writing</h2>
+			<div class="grid gap-6 md:grid-cols-2">
+				<div class="card">
+					<h3 class="mb-4 font-semibold text-gray-100">Certifications</h3>
+					<ul class="space-y-4">
+						{certifications.map((cert) => (
+							<li>
+								<a
+									class="font-medium text-gray-200 hover:text-cyan-400 hover:underline"
+									href={cert.url}
+									target="_blank"
+									rel="noopener"
+								>
+									{cert.name}
+								</a>
+								<p class="text-sm text-gray-400">
+									{cert.issuer} · {cert.date}
+								</p>
+							</li>
+						))}
+					</ul>
+				</div>
+				<div class="card">
+					<h3 class="mb-4 font-semibold text-gray-100">
+						Articles on
+						<a
+							class="text-cyan-400 hover:underline"
+							href="https://dev.to/dylanson25"
+							target="_blank"
+							rel="noopener"
+						>
+							dev.to
+						</a>
+					</h3>
+					<ul class="space-y-4">
+						{articles.map((article) => (
+							<li>
+								<a
+									class="font-medium text-gray-200 hover:text-cyan-400 hover:underline"
+									href={article.url}
+									target="_blank"
+									rel="noopener"
+									lang={article.language === 'ES' ? 'es' : 'en'}
+								>
+									{article.title}
+								</a>
+								<p class="text-sm text-gray-400">
+									{article.date}
+									{article.language === 'ES' && ' · In Spanish'}
+								</p>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pokémon game -->
+		<section id="play" class="scroll-mt-20 py-16">
+			<h2 class="section-title">Take a break</h2>
+			<div class="card flex min-h-96 justify-center">
+				<PokemonGame client:visible />
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section id="contact" class="scroll-mt-20 py-16 text-center">
+			<h2 class="section-title justify-center">Get in touch</h2>
+			<p class="mx-auto max-w-xl text-gray-300">
+				I'm open to new opportunities. If you have a role, a project or just a
+				question, send me a message.
+			</p>
+			<a
+				href="mailto:dvillarrealtoscano@gmail.com"
+				class="mt-6 inline-block rounded-lg bg-cyan-500 px-6 py-3 font-semibold text-slate-900 transition hover:bg-cyan-400"
+			>
+				Say hello
+			</a>
+		</section>
 	</div>
+
+	<footer class="border-t border-slate-600/60 py-6 text-center text-sm text-gray-400">
+		© {year} Dylan Villarreal Toscano · Built with Astro, Vue and Tailwind CSS
+	</footer>
 </Layout>
+
+<style>
+	@reference '../styles/global.css';
+
+	.section-title {
+		@apply mb-8 flex items-center gap-3 text-2xl font-bold text-gray-100;
+	}
+
+	.section-title::after {
+		@apply h-px max-w-60 flex-1 bg-slate-500 content-[''];
+	}
+
+	.card {
+		@apply rounded-xl border border-slate-600 bg-slate-800/50 p-6;
+	}
+
+	.chip {
+		@apply rounded-full bg-cyan-500/10 px-3 py-1 font-mono text-xs text-cyan-300;
+	}
+</style>

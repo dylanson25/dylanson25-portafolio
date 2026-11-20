@@ -3,7 +3,7 @@ import type { ManifestOptions } from 'vite-plugin-pwa';
 export const seoConfig = {
 	baseURL: 'https://dylanson25.dev/',
 	description:
-		'Currently my page is under development, but you can come and explore my social networks to get to know me a little better.',
+		'Portfolio of Dylan Villarreal Toscano, a full-stack software engineer working with React, Vue, TypeScript, C#/.NET and SQL.',
 	type: 'website',
 	image: {
 		url: '/img/background.webp',
